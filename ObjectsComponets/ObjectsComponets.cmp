@@ -56,7 +56,7 @@
                 <tr>
                     <aura:iteration items="{!v.SelectedAccount}" var='cus12' indexVar='key12'>
 						<td data-label="Field name">
-							<div class="slds-truncate" title="">{!cus[0].id}</div>
+							<div class="slds-truncate" title="">test val</div>
 						</td>
 					</aura:iteration>
                 </tr>

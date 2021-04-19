@@ -78,7 +78,7 @@ init: function(component, event, helper) {
                 	field_list += selectedAccount[i] + ",";    
                 }
 			}
-            alert(field_list+'field_list'+object+'object');
+            console.log(field_list+'field_list'+object+'object');
             var action123 = component.get("c.getFieldsValue1234577");
             action123.setParams({
                 "Fields543535" : "id, name",
