@@ -26,10 +26,10 @@ public class QueryBuilderLightning {
         return fieldList;
     }
     @AuraEnabled
-    public static List<sObject> getFieldsValue(String Fields, String Objectname){
-        String fieldslist = Fields;
-        String objectnameval = Objectname;
-        String s = 'select ' + fieldslist +' from '+objectnameval;
+    public static List<sObject> getFieldsValue1234577(String Fields543535, String Objectname123){
+        String fieldslist34234324 = Fields543535;
+        String objectnameval = Objectname123;
+        String s = 'select ' + fieldslist34234324 +' from '+objectnameval;
         List<sObject> sobjList = Database.query(s);
         System.debug(sobjList+'sobjList5435435345');
     	return sobjList;    
