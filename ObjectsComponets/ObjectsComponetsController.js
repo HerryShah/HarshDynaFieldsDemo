@@ -79,12 +79,12 @@ init: function(component, event, helper) {
                 }
 			}
             alert(field_list+'field_list'+object+'object');
-            var action = component.get("c.getFieldsValue");
-            action.setParams({
-                "fields" : field_list,
-                "Objectname" : object
+            var action123 = component.get("c.getFieldsValue1234577");
+            action123.setParams({
+                "Fields543535" : "id, name",
+                "Objectname123" : "contact"
             });
-            action.setCallback(this, function(response123) {
+            action123.setCallback(this, function(response123) {
             var state = response123.getState();
             if (state === "SUCCESS") {
                 var conts123 = response123.getReturnValue();
@@ -94,7 +94,7 @@ init: function(component, event, helper) {
                	//component.set("v.Fieldsmap", result);
             }
         });
-        $A.enqueueAction(action);
+        $A.enqueueAction(action123);
         }
         else{
             alert('Please select atleast one field.')
