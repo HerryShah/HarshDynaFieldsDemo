@@ -1,0 +1,51 @@
+<aura:component controller="QueryBuilderLightning" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" 
+            access="global" >
+   <aura:attribute name="options" type="List" />
+    <aura:attribute name="Fieldsmap" type="List" />
+    <aura:attribute name='ShowTest' type='Boolean' default='false'/>
+   <aura:attribute name="selectedValue" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:attribute name="SelectedAccount" type="String[]"/> 
+<lightning:select name="Objects" label="Select object:" aura:id="Objects" value="{!v.selectedValue}">
+    <aura:iteration items="{!v.options}" var="objectname">
+        <option value="{!objectname}" text="{!objectname}"/>  
+    </aura:iteration>
+</lightning:select>
+<lightning:button variant="brand" label="Action" title="Get Fields" onclick="{! c.handleClick }" />    
+<aura:renderIf isTrue='{!v.ShowTest}'>    
+<!--<aura:iteration items='{!v.Fieldsmap}' var='cus' indexVar='key'>
+{!cus.key} – {!cus.value}<br/><br/>
+</aura:iteration>-->
+<table class="slds-table slds-table_bordered slds-table_cell-buffer">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <th scope="col">
+                    <div class="slds-truncate" title="Field name">Field name</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Data Type">Data Type</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Action">Action</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+         <aura:iteration items="{!v.Fieldsmap}" var='cus' indexVar='key'>
+                <tr>
+                    <td data-label="Field name">
+                        <div class="slds-truncate" title="">{!cus.key}</div>
+                    </td>
+                    <td data-label="Data Type">
+                        <div class="slds-truncate" title="">{!cus.value}</div>
+                    </td>
+                    <td data-label="Industry">
+                        <input type="checkbox" name="chk" id="{!cus.key}" onchange="{!c.getSelectedAccount}"/>
+                    </td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>    
+	<lightning:button variant="brand" label="Get Fields" title="Get Fields" onclick="{! c.deleteAccount }" />    
+</aura:renderIf>    
+</aura:component>
