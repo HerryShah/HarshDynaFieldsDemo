@@ -25,13 +25,14 @@ public class QueryBuilderLightning {
         }
         return fieldList;
     }
-    /*@AuraEnabled
-    public static map<String,string> getFieldsValue(String Fields, String Objectname){
-        String selectedSObject123 = objectname;
-        String fields123 = Fields;
-        map<string, string> fieldList123 = new map<string, string>();
-        List<objectname> lstobj = [select fields123 from objectname];
+    @AuraEnabled
+    public static List<sObject> getFieldsValue(String Fields, String Objectname){
+        String fieldslist = Fields;
+        String objectnameval = Objectname;
+        String s = 'select ' + fieldslist +' from '+objectnameval;
+        List<sObject> sobjList = Database.query(s);
+        System.debug(sobjList+'sobjList5435435345');
+    	return sobjList;    
         
-        //return fieldList123;
-    }*/
+    }
 }
