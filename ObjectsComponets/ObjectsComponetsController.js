@@ -79,11 +79,22 @@ init: function(component, event, helper) {
                 }
 			}
             alert(field_list+'field_list'+object+'object');
-            /*var action = component.get("c.getObjectFieldsName");
+            var action = component.get("c.getFieldsValue");
             action.setParams({
                 "fields" : field_list,
-                "object" : object
-            });*/
+                "Objectname" : object
+            });
+            action.setCallback(this, function(response123) {
+            var state = response123.getState();
+            if (state === "SUCCESS") {
+                var conts123 = response123.getReturnValue();
+                console.log(conts123+'conts123');
+                component.set('v.Fieldsvallist', conts123);
+                component.set('v.ShowTestval', true);
+               	//component.set("v.Fieldsmap", result);
+            }
+        });
+        $A.enqueueAction(action);
         }
         else{
             alert('Please select atleast one field.')
