@@ -54,9 +54,12 @@ init: function(component, event, helper) {
         //when using <ui:inputCheckbox> instead html checkbox
         //selectedId=event.getSource().get("v.text");                
         selectedId = event.target.getAttribute('id');
-        if(document.getElementById(selectedId).checked && component.get("v.SelectedAccount").indexOf(selectedId) < 0)
-            component.get('v.SelectedAccount').push(selectedId);
-        else{
+        //selectedId = selectedId.charAt(0).toUpperCase() + selectedId.slice(1);
+        //alert(selectedId+'selectedId');
+        if(document.getElementById(selectedId).checked && component.get("v.SelectedAccount").indexOf(selectedId) < 0){
+			var test12 = selectedId.charAt(0).toUpperCase() + selectedId.slice(1);            
+            component.get('v.SelectedAccount').push(test12);
+        }else{
             var index = component.get("v.SelectedAccount").indexOf(selectedId);
             if (index > -1) {
                 component.get("v.SelectedAccount").splice(index, 1); 
@@ -68,27 +71,35 @@ init: function(component, event, helper) {
         var selectedAccount=component.get("v.SelectedAccount");
         var field_list = '';
         var i;
-        var object = component.find("Objects").get("v.value");
+        var objectname1234 = component.find("Objects").get("v.value");
         //alert(component.find("Objects").get("v.value")+'dsadsa');
         if(selectedAccount.length>0){
             for (i = 0; i < selectedAccount.length; i++) {
+                console.log(selectedAccount[i]+'slectiiii');
                 if(i == (selectedAccount.length - 1)){
                     field_list += selectedAccount[i]+" ";
                 }else{
                 	field_list += selectedAccount[i] + ",";    
                 }
 			}
-            console.log(field_list+'field_list'+object+'object');
+            console.log(field_list+'field_list'+objectname1234+'object');
             var action123 = component.get("c.getFieldsValue1234577");
             action123.setParams({
-                "Fields543535" : "id, name",
-                "Objectname123" : "contact"
+                "Fields543535" : field_list,
+                "Objectname123" : objectname1234
             });
             action123.setCallback(this, function(response123) {
             var state = response123.getState();
             if (state === "SUCCESS") {
+                //var conts123 = JSON.stringify(response123.getReturnValue());
                 var conts123 = response123.getReturnValue();
-                console.log(conts123+'conts123');
+                console.log(JSON.stringify(conts123)+'conts123');
+                console.log(component.get("v.SelectedAccount")+'selectedAccount');
+                var selectedAccount123 = component.get("v.SelectedAccount");
+                /*for (var j = 0; j < selectedAccount123.length; j++) {
+                    alert(selectedAccount123[j]);
+                }*/
+                component.set('v.innerData', selectedAccount123);
                 component.set('v.Fieldsvallist', conts123);
                 component.set('v.ShowTestval', true);
                	//component.set("v.Fieldsmap", result);

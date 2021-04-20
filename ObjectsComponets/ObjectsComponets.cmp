@@ -1,5 +1,6 @@
 <aura:component controller="QueryBuilderLightning" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" 
             access="global" >
+    <aura:attribute name="innerData" type="String[]" default="['Id','Name','Phone']"/>
    <aura:attribute name="options" type="List" />
     <aura:attribute name="Fieldsmap" type="List" />
     <aura:attribute name='ShowTest' type='Boolean' default='false'/>
@@ -51,12 +52,21 @@
 	<lightning:button variant="brand" label="Get Fields" title="Get Fields" onclick="{! c.deleteAccount }" />    
     <aura:renderIf isTrue='{!v.ShowTestval}'>
         <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <aura:iteration items="{!v.innerData}" var="item">
+                    <th scope="col">
+                    		<div class="slds-truncate" title="">{!item}</div>
+                	</th>
+        		</aura:iteration>
+            </tr>
+        </thead>    
         <tbody>
-         <aura:iteration items="{!v.Fieldsvallist}" var='cus' indexVar='key'>
+         <aura:iteration items="{!v.Fieldsvallist}" var='cus889' indexVar='key88'>
                 <tr>
-                    <aura:iteration items="{!v.SelectedAccount}" var='cus12' indexVar='key12'>
+                    <aura:iteration items="{!v.innerData}" var='cus12' indexVar='key12'>
 						<td data-label="Field name">
-							<div class="slds-truncate" title="">test val</div>
+							<div class="slds-truncate" title="">{!cus889.Name}</div>
 						</td>
 					</aura:iteration>
                 </tr>
