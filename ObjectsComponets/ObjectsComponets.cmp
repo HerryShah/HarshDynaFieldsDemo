@@ -66,7 +66,7 @@
                 <tr>
                     <aura:iteration items="{!v.innerData}" var='cus12' indexVar='key12'>
 						<td data-label="Field name">
-							<div class="slds-truncate" title="">{!cus889.Name}</div>
+							<div class="slds-truncate" title="">{!cus889.Name}{!cus12}</div>
 						</td>
 					</aura:iteration>
                 </tr>

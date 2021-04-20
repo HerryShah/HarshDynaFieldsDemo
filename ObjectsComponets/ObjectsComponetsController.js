@@ -43,6 +43,9 @@ init: function(component, event, helper) {
                 console.log(custs+'custs');
                 component.set('v.Fieldsmap', custs);
                 component.set('v.ShowTest', true);
+                component.set('v.SelectedAccount', []);
+                component.set('v.Fieldsvallist', []);
+                component.set('v.ShowTestval', false);
                	//component.set("v.Fieldsmap", result);
             }
         });
@@ -102,7 +105,8 @@ init: function(component, event, helper) {
                 component.set('v.innerData', selectedAccount123);
                 component.set('v.Fieldsvallist', conts123);
                 component.set('v.ShowTestval', true);
-               	//component.set("v.Fieldsmap", result);
+                //component.set('v.SelectedAccount', []);
+                //component.set("v.Fieldsmap", result);
             }
         });
         $A.enqueueAction(action123);
